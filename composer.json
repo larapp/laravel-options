@@ -1,0 +1,38 @@
+{
+    "name": "larapp/laravel-options",
+    "description": "User options for laravel application",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Petr Jelínek",
+            "email": "petr.jelinek@larapp.cz"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.0",
+        "illuminate/support": "^5.5|^6"
+    },
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Larapp\\Options\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Larapp\\Options\\Test\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Larapp\\Options\\OptionsServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    }
+}
