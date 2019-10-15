@@ -79,3 +79,7 @@ Everything is stored in the database as text. When the values are read, the type
 See config/options-package.php for setting package behavior.
 
 After its change you MUST refresh the cache!
+
+### Versions
+- 0.1
+First version
