@@ -16,7 +16,7 @@ class OptionObserver
      */
     public function saving(Option $option)
     {
-        $config = 'options-package.cast.'.$option->type;
+        $config = 'options-package.types.'.$option->type;
 
         $function = config($config);
 

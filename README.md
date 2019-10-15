@@ -26,7 +26,7 @@ $ php artisan migrate
 
 Run the following command to publish configs.
 ```shell
-$ php artisan vendor:publish --provider="Keniley\Options\OptionsServiceProvider" --tag=options
+$ php artisan vendor:publish --provider="Larapp\Options\OptionsServiceProvider" --tag=options
 ```
 
 ### Create new default directives

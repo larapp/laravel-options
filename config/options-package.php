@@ -45,7 +45,7 @@ return [
     | When you change this setting, you must restore the cache!
     |
     */
-    'cache-name' => 'keniley-options',
+    'cache-name' => 'larapp-options',
 
     /*
     |--------------------------------------------------------------------------

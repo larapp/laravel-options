@@ -3,9 +3,11 @@
 namespace Larapp\Options;
 
 use Illuminate\Support\Facades\Cache;
-use Larapp\Options\Model\Option as Model;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Larapp\Options\Model\Option as Model;
 
 class Options
 {
@@ -13,7 +15,7 @@ class Options
      * Default cache key
      * @var string
      */
-    const CACHE = 'keniley-options';
+    const CACHE = 'larapp-options';
 
      /**
      * Cache driver
@@ -50,9 +52,20 @@ class Options
      */
     public function all(): array
     {
-        $data = Cache::store(self::DRIVER)->rememberForever($this->cache, function () {
-            return Model::all()->toArray();
-        });
+        $data = [];
+
+        try {
+            DB::connection()->getPdo();
+
+            if(Schema::hasTable('options')) {
+                $data = Cache::store(self::DRIVER)->rememberForever($this->cache, function () {
+                    return Model::all()->toArray();
+                });    
+            }
+        } catch (\Exception $e) {
+            // nothing
+        }
+        
 
         return $data;
     }
@@ -86,7 +99,7 @@ class Options
             return $this;
         }
 
-        $data[self::CONFIG] = [];
+        $data[self::CONFIG] = $this->loadFromFile();
 
         foreach($this->all() as $item) {
             $key = $item['name'];
@@ -123,5 +136,21 @@ class Options
         }
 
         return (string) $item['value'];
+    }
+
+    /**
+     * Get configuration from file
+     *
+     * @return array
+     */
+    private function loadFromFile(): array
+    {
+        $file = config_path('options.php');
+
+        if(! file_exists($file)) {
+            return [];
+        }
+
+        return require $file;
     }
 }
