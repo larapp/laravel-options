@@ -81,5 +81,5 @@ See config/options-package.php for setting package behavior.
 After its change you MUST refresh the cache!
 
 ### Versions
-- 0.1
-First version
+- 0.1.0 First version
+- 0.2.0 Add cache driver to package config
