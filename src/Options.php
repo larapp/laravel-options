@@ -36,6 +36,12 @@ class Options
     private $cache;
 
     /**
+     * Cache driver
+     * @var string
+     */
+    private $driver;
+
+    /**
      * New instance
      *
      * @return void
