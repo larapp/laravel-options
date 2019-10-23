@@ -65,7 +65,7 @@ $ php artisan options:clear
 
 Code
 ```php
-use Larapper\Options\Model\Option;
+use Larapp\Options\Facade\Options;
 
 Options::refresh();
 ```
