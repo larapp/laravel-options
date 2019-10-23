@@ -40,12 +40,20 @@ return [
     | Options cache name
     |--------------------------------------------------------------------------
     |
-    | Options are cached by file driver. You can set the key for cache.
+    | Options are cached. You can set the key for cache.
     |
     | When you change this setting, you must restore the cache!
     |
     */
     'cache-name' => 'larapp-options',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Options cache dirver
+    |--------------------------------------------------------------------------
+    |
+    */
+    'cache-driver' => 'file',
 
     /*
     |--------------------------------------------------------------------------

@@ -43,6 +43,8 @@ class Options
     public function __construct()
     {
         $this->cache = config('options-package.cache-name', self::CACHE);
+
+        $this->driver = config('options-package.cache-driver', self::DRIVER);
     }
 
     /**
@@ -58,7 +60,7 @@ class Options
             DB::connection()->getPdo();
 
             if(Schema::hasTable('options')) {
-                $data = Cache::store(self::DRIVER)->rememberForever($this->cache, function () {
+                $data = Cache::store($this->driver)->rememberForever($this->cache, function () {
                     return Model::all()->toArray();
                 });    
             }
@@ -77,7 +79,7 @@ class Options
      */
     public function restore(): Options
     {
-        Cache::store(self::DRIVER)->forget($this->cache);
+        Cache::store($this->driver)->forget($this->cache);
 
         return $this->setToConfig();
     }
